@@ -5,9 +5,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import json
 import time
+
+options=uc.ChromeOptions()
+options.headless=True
+
 # buat driver
 
-driver = uc.Chrome()
+driver = uc.Chrome(options=options)
 
 # buka url
 
@@ -47,7 +51,7 @@ if not isLogin :
    try :
       alert = WebDriverWait(driver,10).until(EC.alert_is_present())
       alert.accept()
-      print("alert di klik enter")
+    #   print("alert di klik enter")
       time.sleep(5)
 
    except :
@@ -83,4 +87,4 @@ with open('scraping_data.json','w') as f:
 print("scraping success")
 
 
-print(isLogin)
+# print(isLogin)
